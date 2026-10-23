@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jotalogistic | Transportation and Logistics</title>
+<meta name="description" content="Jotalogistic takes your freight from pickup to signed proof of delivery. Request a quote for regional freight, last-mile delivery and scheduled routes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --paper: #F2F5F4;
+  --panel: #E5ECEA;
+  --ink: #0D2229;
+  --muted: #4A6068;
+  --rule: #C3CFCC;
+  --sign: #006042;
+  --sign-text: #FFFFFF;
+  --accent: #00573A;
+  --amber: #F2B705;
+  --sky-a: #86D0DC; --sky-b: #FFD3C2; --sky-c: #FFA9A0; --sun: #FFE07A; --cloud: rgba(255,255,255,0.55);
+  --sea: #1E8FA2; --sea2: #7FD6E0; --sand: #F1DDB9;
+  --b-cream: #FFF4EA; --b-pink: #F6A9C0; --b-mint: #A6E3D3; --neon: #E8368F; --win: #24505C;
+  --shade: rgba(13,34,41,0.28); --line: rgba(13,34,41,0.4);
+  --h-ochre: #F2B94B; --h-coral: #EE6F5B; --h-teal: #2FA3A0; --h-blue: #5B93D6; --door: #6B3F2A;
+  --palm: #1E7A52; --trunk: #8A6A4C; --stone: #CDB992; --stone2: #E0D0AE;
+  --flam: #E2462F; --flam2: #F58A3C; --frog: #A28A52; --eye: #FFF4EA;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0A171B;
+    --panel: #11242A;
+    --ink: #E6EEEC;
+    --muted: #96AAB0;
+    --rule: #25393F;
+    --sign: #0B6B49;
+    --sign-text: #FFFFFF;
+    --accent: #6FD6A8;
+    --amber: #F2C230;
+    --sky-a: #0F1B3A; --sky-b: #4B2C6E; --sky-c: #C4487C; --sun: #FFB347; --cloud: rgba(255,255,255,0.07);
+    --sea: #0B4658; --sea2: #1E7F94; --sand: #3B3350;
+    --b-cream: #9B87BC; --b-pink: #C45C8E; --b-mint: #3F9C8C; --neon: #FF5CB0; --win: #F6D27A;
+    --shade: rgba(0,0,0,0.35); --line: rgba(230,238,236,0.3);
+    --h-ochre: #B97E22; --h-coral: #B64A3A; --h-teal: #1F7371; --h-blue: #3D68A0; --door: #3A2217;
+    --palm: #14603F; --trunk: #5A4332; --stone: #7A6D5A; --stone2: #8E806A;
+    --flam: #B02A1B; --flam2: #D2622A; --frog: #7C6A3E; --eye: #EFE6D8;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.02; text-wrap: balance; margin: 0; letter-spacing: 0.005em; }
+p { margin: 0; }
+.wrap { max-width: 1120px; margin-inline: auto; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 20px; border-bottom: 1px solid var(--rule); }
+.mark { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-decoration: none; }
+.nav { display: flex; gap: 22px; flex-wrap: wrap; font-size: 14px; }
+.nav a { color: var(--ink); text-decoration: none; padding-block: 4px; border-bottom: 2px solid transparent; }
+.nav a:hover { border-bottom-color: var(--amber); }
+
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 56px; align-items: center; padding-block: 64px 72px; }
+.hero h1 { font-size: clamp(46px, 7vw, 84px); font-weight: 700; text-transform: uppercase; margin-top: 18px; }
+.hero h1 em { font-style: normal; color: var(--accent); }
+.hero p.lede { font-size: 18px; max-width: 46ch; margin-top: 22px; color: var(--muted); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.btn { display: inline-block; font-family: var(--font-display); font-weight: 600; font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; padding: 12px 24px; border: 2px solid var(--ink); color: var(--ink); background: transparent; }
+.btn.primary { background: var(--amber); border-color: var(--amber); color: #1A1400; }
+.btn:hover { transform: translateY(-1px); }
+
+.sign { background: var(--sign); color: var(--sign-text); padding: 26px 26px 22px; border-radius: 10px; position: relative; box-shadow: inset 0 0 0 3px var(--sign), inset 0 0 0 6px var(--sign-text); }
+.sign-head { display: flex; justify-content: space-between; gap: 12px; font-family: var(--font-data); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 8px 14px; opacity: 0.9; }
+.sign-row { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 18px; padding: 14px 8px; border-top: 1px solid rgba(255,255,255,0.28); }
+.shield { display: grid; place-items: center; width: 60px; height: 42px; font-family: var(--font-display); font-weight: 700; font-size: 21px; letter-spacing: 0.03em; color: #0D2229; background: var(--sign-text); border-radius: 18px 18px 22px 22px / 14px 14px 26px 26px; }
+.shield.done { background: var(--amber); }
+.dest { font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 3.4vw, 36px); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; }
+.sign-foot { font-family: var(--font-data); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 8px 0; border-top: 1px solid rgba(255,255,255,0.28); opacity: 0.9; }
+
+.horizon { height: clamp(210px, 28vw, 320px); border-radius: 10px; overflow: hidden; margin-bottom: 56px; background: var(--panel); }
+.horizon svg { display: block; width: 100%; height: 100%; }
+.st-a { stop-color: var(--sky-a); } .st-b { stop-color: var(--sky-b); } .st-c { stop-color: var(--sky-c); }
+.sun { fill: var(--sun); } .cloud { fill: var(--cloud); }
+.sea { fill: var(--sea); } .sand { fill: var(--sand); }
+.wave { fill: none; stroke: var(--sea2); stroke-width: 2.5; stroke-linecap: round; opacity: 0.8; }
+.cream { fill: var(--b-cream); } .pink { fill: var(--b-pink); } .mint { fill: var(--b-mint); }
+.neon { fill: none; stroke: var(--neon); stroke-width: 2.5; }
+.win { fill: var(--win); } .shade { fill: var(--shade); }
+.ln { fill: none; stroke: var(--line); stroke-width: 2; }
+.bal { fill: none; stroke: var(--line); stroke-width: 8; stroke-dasharray: 2 4; }
+.ochre { fill: var(--h-ochre); } .coral { fill: var(--h-coral); } .teal { fill: var(--h-teal); } .blue { fill: var(--h-blue); }
+.door { fill: var(--door); }
+.palm { fill: var(--palm); } .trunk { fill: var(--trunk); }
+.stone { fill: var(--stone); } .stone2 { fill: var(--stone2); }
+.flam { fill: var(--flam); } .flam2 { fill: var(--flam2); }
+.frog { fill: var(--frog); } .eye { fill: var(--eye); } .pupil { fill: #10212A; }
+#services { border-top: 0; padding-top: 0; }
+
+section { padding-block: 64px; border-top: 1px solid var(--rule); }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; margin-bottom: 40px; align-items: end; }
+.sec-head h2 { font-size: clamp(34px, 5vw, 52px); text-transform: uppercase; }
+.sec-head p { color: var(--muted); max-width: 56ch; }
+
+.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.svc { padding-block: 26px 30px; border-top: 2px solid var(--ink); }
+.svc h3 { font-size: 30px; text-transform: uppercase; margin-bottom: 10px; }
+.svc p { color: var(--muted); max-width: 48ch; }
+.svc .tag { display: block; margin-top: 14px; font-family: var(--font-data); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); }
+
+.board-scroll { overflow-x: auto; border: 1px solid var(--rule); background: var(--panel); }
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-family: var(--font-data); font-weight: 500; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: var(--paper); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.item { font-family: var(--font-display); font-weight: 600; font-size: 24px; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; }
+td.why { color: var(--muted); }
+.note { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; counter-reset: step; }
+.steps li { counter-increment: step; padding-top: 18px; border-top: 2px solid var(--ink); position: relative; }
+.steps li::before { content: counter(step); position: absolute; top: -17px; left: 0; width: 32px; height: 32px; display: grid; place-items: center; background: var(--amber); color: #1A1400; font-family: var(--font-display); font-weight: 700; font-size: 20px; }
+.steps h3 { font-size: 26px; text-transform: uppercase; margin: 14px 0 8px; }
+.steps p { color: var(--muted); font-size: 15px; }
+
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.contact h2 { font-size: clamp(38px, 6vw, 64px); text-transform: uppercase; }
+.contact .lede { margin-top: 18px; color: var(--muted); max-width: 44ch; }
+dl { margin: 0; border-top: 2px solid var(--ink); }
+.row { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+dt { font-family: var(--font-data); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+dd { margin: 0; overflow-wrap: anywhere; }
+
+footer { padding-block: 32px 40px; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 12px 32px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 40px 48px; }
+  .sec-head { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .services { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; }
+  .contact { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  section { padding-block: 48px; }
+}
+@media (max-width: 520px) {
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .sign { padding: 20px 16px 18px; }
+  .sign-row { grid-template-columns: 56px minmax(0, 1fr); gap: 14px; }
+  .shield { width: 54px; font-size: 19px; }
+  .nav { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top">Jotalogistic</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#quote">Quote info</a>
+      <a href="#process">How it works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Transportation and logistics</p>
+        <h1>Freight that keeps <em>moving</em>.</h1>
+        <p class="lede">Jotalogistic takes your freight from pickup to signed proof of delivery. You tell us the lane. We handle the pickup, the road and the paperwork.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Request a quote</a>
+          <a class="btn" href="#process">How it works</a>
+        </div>
+      </div>
+
+      <div class="sign" role="img" aria-label="Guide sign showing the stages of every load: pickup, dispatch, estimated arrival updates, and proof of delivery">
+        <div class="sign-head"><span>Every load</span><span>Jotalogistic</span></div>
+        <div class="sign-row"><span class="shield">PU</span><span class="dest">Pickup confirmed</span></div>
+        <div class="sign-row"><span class="shield">GO</span><span class="dest">Driver dispatched</span></div>
+        <div class="sign-row"><span class="shield">ETA</span><span class="dest">Check calls en route</span></div>
+        <div class="sign-row"><span class="shield done">POD</span><span class="dest">Delivered and signed</span></div>
+        <div class="sign-foot">Transportation and logistics</div>
+      </div>
+    </div>
+
+    <div class="horizon" aria-hidden="true">
+      <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" focusable="false">
+        <defs>
+          <linearGradient id="sky" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="320">
+            <stop offset="0" class="st-a"/><stop offset="0.45" class="st-b"/><stop offset="0.75" class="st-c"/><stop offset="1" class="st-c"/>
+          </linearGradient>
+          <pattern id="wins" width="14" height="16" patternUnits="userSpaceOnUse"><rect x="3" y="4" width="7" height="8" class="win"/></pattern>
+          <symbol id="palm" viewBox="0 0 150 200">
+            <path class="trunk" d="M58 200C60 150 66 110 74 70L81 71C73 112 69 152 70 200Z"/>
+            <path class="palm" d="M77 70C58 48 28 50 6 76C32 60 58 62 77 70Z"/>
+            <path class="palm" d="M77 70C62 40 40 24 14 28C42 34 60 48 77 70Z"/>
+            <path class="palm" d="M77 70C74 40 78 20 90 4C88 30 84 50 77 70Z"/>
+            <path class="palm" d="M77 70C92 42 114 30 140 36C112 42 94 54 77 70Z"/>
+            <path class="palm" d="M77 70C96 50 126 54 146 80C120 64 96 62 77 70Z"/>
+            <path class="palm" d="M77 70C64 70 48 84 40 104C54 88 66 78 77 70Z"/>
+            <path class="palm" d="M77 70C90 72 106 86 112 106C100 90 88 80 77 70Z"/>
+            <circle class="trunk" cx="74" cy="76" r="4"/><circle class="trunk" cx="82" cy="77" r="4"/>
+          </symbol>
+        </defs>
+
+        <rect width="1200" height="320" fill="url(#sky)"/>
+        <ellipse class="cloud" cx="180" cy="58" rx="64" ry="9"/><ellipse class="cloud" cx="236" cy="72" rx="40" ry="6"/>
+        <ellipse class="cloud" cx="930" cy="48" rx="74" ry="10"/><ellipse class="cloud" cx="990" cy="64" rx="44" ry="6"/>
+        <circle class="sun" cx="600" cy="196" r="98" opacity="0.22"/>
+        <circle class="sun" cx="600" cy="196" r="72"/>
+        <g fill="url(#sky)"><rect x="520" y="206" width="160" height="3"/><rect x="520" y="216" width="160" height="4"/><rect x="520" y="227" width="160" height="5"/></g>
+        <rect class="sea" y="236" width="1200" height="84"/>
+
+        <rect class="cream" x="40" y="168" width="160" height="100"/>
+        <rect class="cream" x="92" y="122" width="56" height="50"/>
+        <rect class="cream" x="106" y="104" width="28" height="22"/>
+        <path class="ln" d="M120 104V84"/>
+        <rect class="pink" x="34" y="164" width="172" height="6"/>
+        <rect class="pink" x="86" y="118" width="68" height="5"/>
+        <rect class="pink" x="102" y="100" width="36" height="5"/>
+        <rect fill="url(#wins)" x="48" y="178" width="144" height="56"/>
+        <rect fill="url(#wins)" x="98" y="128" width="44" height="36"/>
+        <path class="ln" d="M106 124V168M134 124V168"/>
+        <rect class="pink" x="106" y="238" width="28" height="30"/>
+        <rect class="pink" x="100" y="234" width="40" height="5"/>
+
+        <path class="pink" d="M215 268V204Q215 190 229 190H350V268Z"/>
+        <rect class="cream" x="211" y="186" width="145" height="5"/>
+        <path class="neon" d="M215 198H350"/>
+        <path class="ln" d="M215 228H350"/>
+        <circle class="win" cx="236" cy="212" r="5"/><circle class="win" cx="260" cy="212" r="5"/><circle class="win" cx="284" cy="212" r="5"/><circle class="win" cx="308" cy="212" r="5"/><circle class="win" cx="332" cy="212" r="5"/>
+        <circle class="win" cx="236" cy="246" r="5"/><circle class="win" cx="260" cy="246" r="5"/><circle class="win" cx="284" cy="246" r="5"/><circle class="win" cx="308" cy="246" r="5"/><circle class="win" cx="332" cy="246" r="5"/>
+
+        <rect class="mint" x="365" y="156" width="105" height="112"/>
+        <rect class="mint" x="380" y="140" width="75" height="20"/>
+        <rect class="cream" x="359" y="152" width="117" height="5"/>
+        <rect class="cream" x="412" y="108" width="20" height="36"/>
+        <rect class="neon" x="412" y="108" width="20" height="36"/>
+        <rect fill="url(#wins)" x="372" y="166" width="91" height="90"/>
+
+        <g transform="translate(640 268)">
+          <rect class="ochre" x="0" y="-112" width="78" height="132"/><rect class="cream" x="-3" y="-112" width="84" height="7"/>
+          <rect class="win" x="12" y="-92" width="18" height="26"/><rect class="win" x="48" y="-92" width="18" height="26"/>
+          <rect class="shade" x="7" y="-92" width="5" height="26"/><rect class="shade" x="30" y="-92" width="5" height="26"/><rect class="shade" x="43" y="-92" width="5" height="26"/><rect class="shade" x="66" y="-92" width="5" height="26"/>
+          <rect class="cream" x="4" y="-62" width="70" height="3"/><path class="bal" d="M6 -56H72"/>
+          <path class="door" d="M10 0V-30a11 11 0 0 1 22 0V0Z"/><rect class="win" x="46" y="-44" width="22" height="28"/>
+        </g>
+        <g transform="translate(720 268)">
+          <rect class="coral" x="0" y="-124" width="78" height="144"/><rect class="cream" x="-3" y="-124" width="84" height="7"/>
+          <rect class="win" x="12" y="-104" width="18" height="26"/><rect class="win" x="48" y="-104" width="18" height="26"/>
+          <rect class="shade" x="7" y="-104" width="5" height="26"/><rect class="shade" x="30" y="-104" width="5" height="26"/><rect class="shade" x="43" y="-104" width="5" height="26"/><rect class="shade" x="66" y="-104" width="5" height="26"/>
+          <rect class="cream" x="4" y="-74" width="70" height="3"/><path class="bal" d="M6 -68H72"/>
+          <path class="door" d="M10 0V-30a11 11 0 0 1 22 0V0Z"/><rect class="win" x="46" y="-44" width="22" height="28"/>
+        </g>
+        <g transform="translate(800 268)">
+          <rect class="teal" x="0" y="-112" width="78" height="132"/><rect class="cream" x="-3" y="-112" width="84" height="7"/>
+          <rect class="win" x="12" y="-92" width="18" height="26"/><rect class="win" x="48" y="-92" width="18" height="26"/>
+          <rect class="shade" x="7" y="-92" width="5" height="26"/><rect class="shade" x="30" y="-92" width="5" height="26"/><rect class="shade" x="43" y="-92" width="5" height="26"/><rect class="shade" x="66" y="-92" width="5" height="26"/>
+          <rect class="cream" x="4" y="-62" width="70" height="3"/><path class="bal" d="M6 -56H72"/>
+          <path class="door" d="M10 0V-30a11 11 0 0 1 22 0V0Z"/><rect class="win" x="46" y="-44" width="22" height="28"/>
+        </g>
+        <g transform="translate(880 268)">
+          <rect class="blue" x="0" y="-124" width="78" height="144"/><rect class="cream" x="-3" y="-124" width="84" height="7"/>
+          <rect class="win" x="12" y="-104" width="18" height="26"/><rect class="win" x="48" y="-104" width="18" height="26"/>
+          <rect class="shade" x="7" y="-104" width="5" height="26"/><rect class="shade" x="30" y="-104" width="5" height="26"/><rect class="shade" x="43" y="-104" width="5" height="26"/><rect class="shade" x="66" y="-104" width="5" height="26"/>
+          <rect class="cream" x="4" y="-74" width="70" height="3"/><path class="bal" d="M6 -68H72"/>
+          <path class="door" d="M10 0V-30a11 11 0 0 1 22 0V0Z"/><rect class="win" x="46" y="-44" width="22" height="28"/>
+        </g>
+
+        <rect class="stone" x="962" y="236" width="114" height="34"/>
+        <rect class="stone2" x="958" y="230" width="122" height="8"/>
+        <path class="ln" d="M962 249H1076M962 259H1076"/>
+        <rect class="stone2" x="1004" y="196" width="24" height="36"/>
+        <path class="stone" d="M1002 196A14 14 0 0 1 1030 196Z"/>
+        <circle class="stone" cx="1016" cy="180" r="3"/>
+        <rect class="win" x="1013" y="206" width="6" height="14" rx="3"/>
+        <g transform="translate(1048 230) scale(1.8)">
+          <ellipse class="frog" cx="0" cy="-5" rx="8" ry="5"/>
+          <circle class="frog" cx="8" cy="-8" r="4.4"/>
+          <circle class="eye" cx="9.5" cy="-10.6" r="1.7"/><circle class="pupil" cx="9.9" cy="-10.6" r="0.8"/>
+          <path class="frog" d="M-6 -4Q-12 -5 -13 1L-7 1Z"/>
+          <path class="frog" d="M5 -3L7 0L3 0Z"/>
+        </g>
+
+        <path class="trunk" d="M1124 268C1124 240 1128 222 1132 200L1140 200C1140 224 1142 244 1144 268Z"/>
+        <ellipse class="flam" cx="1128" cy="184" rx="66" ry="26"/>
+        <ellipse class="flam" cx="1086" cy="196" rx="38" ry="17"/>
+        <ellipse class="flam" cx="1170" cy="194" rx="30" ry="16"/>
+        <circle class="flam2" cx="1100" cy="176" r="4"/><circle class="flam2" cx="1130" cy="166" r="4"/><circle class="flam2" cx="1158" cy="178" r="4"/><circle class="flam2" cx="1178" cy="190" r="4"/><circle class="flam2" cx="1084" cy="194" r="4"/><circle class="flam2" cx="1118" cy="190" r="4"/><circle class="flam2" cx="1146" cy="196" r="4"/><circle class="flam2" cx="1112" cy="200" r="3"/>
+
+        <use href="#palm" x="470" y="70" width="150" height="200"/>
+        <use href="#palm" x="300" y="118" width="112" height="150"/>
+        <use href="#palm" x="-10" y="148" width="90" height="120"/>
+
+        <rect class="sand" y="268" width="1200" height="16"/>
+        <path class="wave" d="M0 302q25 -9 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0"/>
+        <path class="wave" d="M-25 312q25 -9 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0"/>
+      </svg>
+    </div>
+
+    <section id="services">
+      <div class="sec-head">
+        <h2>What we move</h2>
+        <p>Four ways to work with us. Pick one, or combine them as your volume changes.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <h3>Regional freight</h3>
+          <p>Truckload and partial loads between cities and regions. Pickup windows are confirmed before the truck rolls.</p>
+          <span class="tag">Truckload and partial</span>
+        </article>
+        <article class="svc">
+          <h3>Last-mile delivery</h3>
+          <p>Final-stretch deliveries to stores, job sites and homes, with delivery windows that match how your customers receive.</p>
+          <span class="tag">Stores, sites and homes</span>
+        </article>
+        <article class="svc">
+          <h3>Scheduled routes</h3>
+          <p>A recurring run on the same days each week, so your shelves, crews and customers know when freight arrives.</p>
+          <span class="tag">Weekly and daily runs</span>
+        </article>
+        <article class="svc">
+          <h3>Dispatch and coordination</h3>
+          <p>One point of contact for scheduling, check calls, delivery paperwork and exceptions. You get answers, not a ticket number.</p>
+          <span class="tag">Signed proof of delivery</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="quote">
+      <div class="sec-head">
+        <h2>Quote info</h2>
+        <p>Have these details ready and we can price your load quickly.</p>
+      </div>
+      <div class="board-scroll">
+        <table>
+          <thead>
+            <tr><th>What to send</th><th>Why we ask</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="item">Pickup and drop-off</td><td class="why">Sets the route, the miles and the driver's schedule.</td></tr>
+            <tr><td class="item">Freight and weight</td><td class="why">Decides the truck and equipment that fit the load.</td></tr>
+            <tr><td class="item">Pallets or dimensions</td><td class="why">Tells us how much space the load takes.</td></tr>
+            <tr><td class="item">Pickup and delivery dates</td><td class="why">Sets the pickup window and the delivery commitment.</td></tr>
+            <tr><td class="item">Special handling</td><td class="why">Liftgate, appointment times, or fragile freight change how we plan it.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Rates are quoted per load and confirmed before pickup.</p>
+    </section>
+
+    <section id="process">
+      <div class="sec-head">
+        <h2>How it works</h2>
+        <p>From first call to signed delivery, in the order it happens.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Tell us the lane</h3><p>Send pickup, drop-off, freight type, weight and the date you need it there.</p></li>
+        <li><h3>Get a firm quote</h3><p>We confirm the rate and the pickup window before anything moves.</p></li>
+        <li><h3>We dispatch</h3><p>A driver is assigned and you get check calls along the route.</p></li>
+        <li><h3>Delivered and signed</h3><p>You receive the signed proof of delivery as soon as the freight is off the truck.</p></li>
+      </ol>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <h2>Got a load?</h2>
+          <p class="lede">Send us the pickup, the drop-off and the date. We reply with a rate and a pickup window.</p>
+        </div>
+        <dl>
+          <div class="row"><dt>Email</dt><dd><a href="mailto:info@jotalogistic.com">info@jotalogistic.com</a></dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Jotalogistic. All rights reserved.</span>
+  </footer>
+</div>
+</body>
+</html>
